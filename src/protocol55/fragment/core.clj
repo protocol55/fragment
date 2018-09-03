@@ -5,17 +5,6 @@
             [clojure.java.io :as io]
             [ring.util.io :as ring-io]))
 
-(defn form-parts
-  [[tag attrs & children]]
-  (let [[attrs children]
-        (cond (map? attrs) [attrs children]
-              :else [nil (if (some? attrs)
-                           (cons attrs children)
-                           children)])]
-    {:tag tag
-     :attrs attrs
-     :children children}))
-
 (def void-tags
   #{"area" "base" "br" "col" "command" "embed" "hr" "img" "input" "keygen" "link"
     "meta" "param" "source" "track" "wbr"})
